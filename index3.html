@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>K-means Model Inference</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+</head>
+
+<body>
+    <script>
+        // Modelo K-means em formato JSON
+        const modelJson = {
+            "model_class": "<class 'sklearn.cluster._kmeans.KMeans'>",
+            "model_state": {
+                "n_clusters": 5,
+                "init": "k-means++",
+                "max_iter": 300,
+                "tol": 0.0001,
+                "n_init": 10,
+                "verbose": 0,
+                "random_state": null,
+                "copy_x": true,
+                "algorithm": "lloyd",
+                "n_features_in_": 4,
+                "_tol": 8.167097333352205,
+                "_n_init": 10,
+                "_algorithm": "lloyd",
+                "_n_threads": 2,
+                "cluster_centers_": [
+                    [
+                        2501.134968437825,
+                        158.43080105019982,
+                        225.85238449337425,
+                        511.4760756723622
+                    ],
+                    [
+                        1422.92159952897,
+                        133.90746087465234,
+                        128.51878859073773,
+                        341.82391689919194
+                    ],
+                    [
+                        2268.8420003849074,
+                        468.3430664005658,
+                        160.83401886266824,
+                        786.8327182369633
+                    ],
+                    [
+                        2849.624837273599,
+                        400.5703232601635,
+                        260.27025643066054,
+                        767.3581224040931
+                    ],
+                    [
+                        1876.067628099839,
+                        222.5407837265385,
+                        135.500918932789,
+                        500.44442087401046
+                    ]
+                ],
+                "_n_features_out": 5,
+                "labels_": [
+                    4,
+                    4,
+                    2,
+                    2,
+                    3,
+                    2,
+                    3,
+                    2,
+                    4,
+                    0,
+                    0,
+                    3,
+                    4,
+                    4,
+                    3,
+                    0,
+                    1,
+                    4,
+                    2,
+                    3,
+                    4,
+                    1,
+                    2,
+                    3,
+                    4,
+                    1,
+                    0,
+                    3,
+                    1,
+                    2,
+                    4,
+                    3,
+                    3,
+                    1,
+                    4,
+                    2,
+                    3,
+                    2,
+                    3,
+                    0,
+                    3,
+                    4,
+                    4,
+                    0,
+                    3,
+                    3,
+                    4,
+                    0,
+                    3,
+                    4,
+                    0,
+                    4,
+                    1,
+                    3,
+                    4,
+                    4,
+                    2,
+                    1,
+                    3,
+                    3,
+                    4,
+                    4,
+                    0,
+                    1,
+                    2,
+                    0,
+                    1,
+                    3,
+                    3,
+                    1,
+                    3,
+                    3,
+                    2,
+                    0,
+                    0,
+                    0,
+                    2,
+                    0,
+                    2,
+                    2,
+                    3,
+                    2,
+                    4,
+                    1,
+                    4
+                ],
+                "inertia_": 4262733.476614373,
+                "n_iter_": 3
+            }
+        };
+
+        // Converte o formato do modelo para o formato adequado do TensorFlow.js
+        function convertModel(modelJson) {
+            const n_clusters = modelJson.model_state.n_clusters;
+            const cluster_centers = modelJson.model_state.cluster_centers_;
+            const n_features = cluster_centers[0].length;
+
+            const clusterCentersTensor = tf.tensor(cluster_centers);
+
+            return {
+                n_clusters: n_clusters,
+                clusterCenters: clusterCentersTensor
+            };
+        }
+
+        // Função para prever o cluster para um novo conjunto de valores
+        function predictCluster(model, values) {
+            const valuesTensor = tf.tensor([values]);
+            const distances = model.clusterCenters.sub(valuesTensor).pow(2).sum(1);
+            const predictedCluster = distances.argMin().dataSync()[0];
+            return predictedCluster;
+        }
+
+        // Carrega o modelo e realiza previsões
+        async function loadAndPredict() {
+            const model = convertModel(modelJson);
+
+            // Exemplo de novos valores para teste
+            const newValues = [2473, 400, 181, 678]; // Coloque seus próprios valores aqui
+
+            const predictedCluster = predictCluster(model, newValues);
+
+            console.log(`Predicted cluster: ${predictedCluster}`);
+        }
+
+        loadAndPredict();
+    </script>
+</body>
+
+</html>
