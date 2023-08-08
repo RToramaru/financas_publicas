@@ -106,6 +106,8 @@ hr.rounded {
     font-weight: 300;
     color: #474e5d;
     font-size: 20px;
+    background-color: whitesmoke;
+    margin: 0%;
 }
 
 .text-result-comparison {
@@ -113,6 +115,7 @@ hr.rounded {
     font-weight: 300;
     color: #474e5d;
     font-size: 20px;
+    background-color: whitesmoke;
 }
 
 .select-city {
