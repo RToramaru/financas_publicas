@@ -10,3 +10,7 @@ body {
     background-color: #e9ecef;
     border: 1px solid #ced4da;
 }
+
+.container {
+    margin-top: 10px;
+}
