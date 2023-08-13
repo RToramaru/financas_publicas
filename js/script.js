@@ -266,7 +266,7 @@ async function predict() {
         currencyToRealNumber(despesas_funcao), currencyToRealNumber(atencao_basica)]);
 
     document.getElementById('group_cities').innerHTML = `
-    <h5 class="card-title text-center">Grupos de cidades que contém gastos semelhantes nas seguintes grupos</h5>
+    <h5 class="card-title text-center">Grupos de cidades com gastos semelhantes nas seguintes despesas</h5>
     
     <div class="container">
             <div class="col-xs-12">
