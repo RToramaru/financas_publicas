@@ -87,7 +87,7 @@ const modelJson_assistenciahospitalar_despesasporfuncao = {
 const modelJson_atencaobasica_gastosgerais = {
     "model_class": "<class 'sklearn.cluster._kmeans.KMeans'>",
     "model_state": {
-        "n_clusters": 4,
+        "n_clusters": 5,
         "init": "k-means++",
         "max_iter": 300,
         "tol": 0.0001,
@@ -121,6 +121,10 @@ const modelJson_atencaobasica_gastosgerais = {
             [
                 195.1337610475728,
                 1007.6449853467097
+            ],
+            [
+                467.66820112062775,
+                879.36282021525525
             ]
 
         ],
@@ -366,7 +370,7 @@ data = [
     ['Belo Horizonte (MG)', 1, 1, 4, 2, 1],
     ['Betim (MG)', 1, 1, 4, 2, 1],
     ['Birigui (SP)', 2, 2, 1, 1, 2],
-    ['Blumenau (SC)', 1, 1, , 2, 1],
+    ['Blumenau (SC)', 1, 1, 5, 2, 1],
     ['Boa Vista (RR)', 2, 2, 1, 1, 2],
     ['Brusque (SC)', 2, 2, 1, 1, 2],
     ['Cachoeiro de Itapemirim (ES)', 2, 2, 2, 1, 2],
@@ -376,7 +380,7 @@ data = [
     ['Campo Grande (MS)', 1, 1, 4, 2, 1],
     ['Canoas (RS)', 1, 1, 4, 2, 1],
     ['Caxias do Sul (RS)', 1, 1, 3, 2, 1],
-    ['Chapecó (SC)', 2, 2, , 2, 2],
+    ['Chapecó (SC)', 2, 2, 5, 2, 2],
     ['Colatina (ES)', 2, 2, 1, 1, 2],
     ['Coronel Fabriciano (MG)', 2, 2, 2, 1, 2],
     ['Crato (CE)', 2, 2, 1, 1, 2],
@@ -422,7 +426,7 @@ data = [
     ['Muriaé (MG)', 2, 2, 2, 1, 2],
     ['Niterói (RJ)', 1, 1, 3, 2, 1],
     ['Nova Iguaçu (RJ)', 2, 2, 2, 1, 2],
-    ['Novo Hamburgo (RS)', 2, 2, , 1, 2],
+    ['Novo Hamburgo (RS)', 2, 2, 5, 1, 2],
     ['Palmas (TO)', 1, 1, 1, 1, 1],
     ['Parauapebas (PA)', 1, 1, 4, 2, 1],
     ['Parnaíba (PI)', 2, 2, 2, 1, 2],
@@ -440,8 +444,8 @@ data = [
     ['Resende (RJ)', 1, 1, 4, 2, 1],
     ['Ribeirão das Neves (MG)', 2, 2, 2, 1, 2],
     ['Ribeirão Pires (SP)', 2, 2, 1, 1, 2],
-    ['Ribeirão Preto (SP)', 1, 1, , 2, 1],
-    ['Rio das Ostras (RJ)', -1, -1, , 2, -1],
+    ['Ribeirão Preto (SP)', 1, 1, 5, 2, 1],
+    ['Rio das Ostras (RJ)', -1, -1, 5, 2, -1],
     ['Rio de Janeiro (RJ)', 1, 1, 1, 2, 1],
     ['Rio Grande (RS)', 2, 2, 2, 1, 2],
     ['Sabará (MG)', 2, 2, 2, 1, 2],
