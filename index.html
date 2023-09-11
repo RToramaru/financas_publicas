@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Finanças Públicas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
     <div class="container">
         <h2>Finanças Públicas</h2>
@@ -18,7 +20,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R$</span>
                         </div>
-                        <input type="text" class="form-control" id="despesas_funcao" placeholder="0,00" oninput="formatCurrency(this)">
+                        <input type="text" class="form-control" id="despesas_funcao" placeholder="0,00"
+                            oninput="formatCurrency(this)">
                     </div>
                 </div>
                 <div class="form-group col-lg-3 col-xs-12">
@@ -27,7 +30,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R$</span>
                         </div>
-                        <input type="text" class="form-control" id="assistencia_hospitalar" placeholder="0,00" oninput="formatCurrency(this)">
+                        <input type="text" class="form-control" id="assistencia_hospitalar" placeholder="0,00"
+                            oninput="formatCurrency(this)">
                     </div>
                 </div>
                 <div class="form-group col-lg-3 col-xs-12">
@@ -36,7 +40,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R$</span>
                         </div>
-                        <input type="text" class="form-control" id="atencao_basica" placeholder="0,00" oninput="formatCurrency(this)">
+                        <input type="text" class="form-control" id="atencao_basica" placeholder="0,00"
+                            oninput="formatCurrency(this)">
                     </div>
                 </div>
                 <div class="form-group col-lg-3 col-xs-12">
@@ -45,17 +50,19 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R$</span>
                         </div>
-                        <input type="text" class="form-control" id="gastos_gerais" placeholder="0,00" oninput="formatCurrency(this)">
+                        <input type="text" class="form-control" id="gastos_gerais" placeholder="0,00"
+                            oninput="formatCurrency(this)">
                     </div>
                 </div>
             </div>
-            
+            <input type="checkbox" id="check"> <label for="check">Obter apenas dentro do intervalo pre-definidos</label>
+            </br>
             <button type="button" class="btn btn-primary" onclick="get_group()">Enviar</button>
         </form>
     </div>
 
     <div id="group_cities">
-        
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -64,5 +71,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="js/script.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 </body>
+
 </html>
