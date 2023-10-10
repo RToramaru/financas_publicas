@@ -4,82 +4,304 @@
 <head>
     <title>Finanças Públicas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-    <div class="container">
+    <div class="container background">
         <h2>Finanças Públicas</h2>
         <form>
             <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="input1">Despesa por Função:</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">R$</span>
+                            </div>
+                            <input type="text" class="form-control" id="despesas_funcao" placeholder="0,00"
+                                oninput="formatCurrency(this)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="input2">Assistência Hospitalar:</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">R$</span>
+                            </div>
+                            <input type="text" class="form-control" id="assistencia_hospitalar" placeholder="0,00"
+                                oninput="formatCurrency(this)">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="input3">Atenção Básica:</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">R$</span>
+                            </div>
+                            <input type="text" class="form-control" id="atencao_basica" placeholder="0,00"
+                                oninput="formatCurrency(this)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="input4">Gastos Gerais com Saúde:</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">R$</span>
+                            </div>
+                            <input type="text" class="form-control" id="gastos_gerais" placeholder="0,00"
+                                oninput="formatCurrency(this)">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
 
-                <div class="form-group col-lg-3 col-xs-12">
-                    <label for="input1">Despesa por Função:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">R$</span>
-                        </div>
-                        <input type="text" class="form-control" id="despesas_funcao" placeholder="0,00"
-                            oninput="formatCurrency(this)">
-                    </div>
-                </div>
-                <div class="form-group col-lg-3 col-xs-12">
-                    <label for="input2">Assistência Hospitalar:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">R$</span>
-                        </div>
-                        <input type="text" class="form-control" id="assistencia_hospitalar" placeholder="0,00"
-                            oninput="formatCurrency(this)">
-                    </div>
-                </div>
-                <div class="form-group col-lg-3 col-xs-12">
-                    <label for="input3">Atenção Básica:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">R$</span>
-                        </div>
-                        <input type="text" class="form-control" id="atencao_basica" placeholder="0,00"
-                            oninput="formatCurrency(this)">
-                    </div>
-                </div>
-                <div class="form-group col-lg-3 col-xs-12">
-                    <label for="input4">Gastos Gerais com Saúde:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">R$</span>
-                        </div>
-                        <input type="text" class="form-control" id="gastos_gerais" placeholder="0,00"
-                            oninput="formatCurrency(this)">
+                    <div class="form-group mt-4">
+
+                        <button type="button" class="btn btn-primary btn-block btn-view-map" data-toggle="modal"
+                            data-target="#city-map">Visualizar mapa</button>
+
+                        <button type="button" class="btn btn-primary btn-block btn-view-map" data-toggle="modal"
+                            data-target="#simulation">Simular valores</button>
+
+                        <button type="button" class="btn btn-primary btn-block btn-get-city"
+                            onclick="populateTable()">Obter cidades</button>
                     </div>
                 </div>
             </div>
             <input type="checkbox" id="check"> <label for="check">Obter apenas dentro do intervalo pre-definidos</label>
-            </br>
-            <button type="button" class="btn btn-primary" onclick="get_group()">Enviar</button>
+
         </form>
     </div>
 
-    <div id="group_cities">
 
+
+    <div class="modal fade" id="city-map" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="container text-center my-3">
+                        <h2 class="font-weight-light text-color">Distribuição de gastos semelhantes</h2>
+                        <div class="row mx-auto my-auto">
+                            <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
+                                <div class="carousel-inner w-100" role="listbox">
+                                    <div class="carousel-item active">
+                                        <div class="col-md-4">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/group_1/1.png">
+                                                <p class="text-color">Média de Despesas por função: R$
+                                                    3.598,00</br>Média de Gastos gerais com saúde: R$ 862,00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-4">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/group_1/2.png">
+                                                <p class="text-color">Média de Despesas por função: R$
+                                                    2.155,00</br>Média de Gastos gerais com saúde: R$ 585,00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-4">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/group_2/1.png">
+                                                <p class="text-color">Média de Despesas por função: R$
+                                                    3.560,00</br>Média de Assistência hospitalar: R$ 432,00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-4">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/group_2/2.png">
+                                                <p class="text-color">Média de Despesas por função: R$
+                                                    2.155,00</br>Média de Assistência hospitalar: R$ 281,00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-4">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/group_3/1.png">
+                                                <p class="text-color">Média de Atenção básica: R$ 226,00</br>Média de
+                                                    Gastos gerais com saúde: R$ 611,00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-4">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/group_3/2.png">
+                                                <p class="text-color">Média de Atenção básica: R$ 131,00</br>Média de
+                                                    Gastos gerais com saúde: R$ 384,00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-4">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/group_3/3.png">
+                                                <p class="text-color">Média de Atenção básica: R$ 196,00</br>Média de
+                                                    Gastos gerais com saúde: R$ 784,00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-4">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/group_3/4.png">
+                                                <p class="text-color">Média de Atenção básica: R$ 195,00</br>Média de
+                                                    Gastos gerais com saúde: R$ 1.007,00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-4">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/group_3/5.png">
+                                                <p class="text-color">Média de Atenção básica: R$ 467,00</br>Média de
+                                                    Gastos gerais com saúde: R$ 879,00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-4">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/group_4/1.png">
+                                                <p class="text-color">Média de Assistência Hospitalar: R$
+                                                    188,00</br>Média de Gastos gerais com saúde: R$ 503,00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-4">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/group_4/2.png">
+                                                <p class="text-color">Média de Assistência Hospitalar: R$
+                                                    492,00</br>Média de Gastos gerais com saúde: R$ 880,00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-4">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/group_5/1.png">
+                                                <p class="text-color">Média de Despesas por função: R$
+                                                    3.543,00</br>Média de Atenção básica: R$ 249,00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-4">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/group_5/2.png">
+                                                <p class="text-color">Despesas por função: R$ 2.146,00</br>Média de
+                                                    atenção básica: R$ 172,00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev w-auto" href="#recipeCarousel" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle"
+                                        aria-hidden="true"></span>
+                                    <span class="sr-only">Anterior</span>
+                                </a>
+                                <a class="carousel-control-next w-auto" href="#recipeCarousel" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle"
+                                        aria-hidden="true"></span>
+                                    <span class="sr-only">Próximo</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="simulation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h2 class="text-color">Ajuste os valores para simular</h2>
+
+                    <div class="slider-container">
+                        <div class="slider-item">
+                            <label for="slider1" class="slider-label text-color">Despesa por Função:</label>
+                            <input type="range" id="slider1" min="100" max="5000" value="100" step="50">
+                            <span id="value1" class="slider-value text-color">100</span>
+                        </div>
+
+                        <div class="slider-item">
+                            <label for="slider2" class="slider-label text-color">Atenção Básica:</label>
+                            <input type="range" id="slider2" min="100" max="5000" value="100" step="50">
+                            <span id="value2" class="slider-value text-color">100</span>
+                        </div>
+
+                        <div class="slider-item">
+                            <label for="slider3" class="slider-label text-color">Assistência Hospitalar:</label>
+                            <input type="range" id="slider3" min="100" max="5000" value="100" step="50">
+                            <span id="value3" class="slider-value text-color">100</span>
+                        </div>
+
+                        <div class="slider-item">
+                            <label for="slider4" class="slider-label text-color">Gastos Gerais com
+                                Saúde:</label>
+                            <input type="range" id="slider4" min="100" max="5000" value="100" step="50">
+                            <span id="value4" class="slider-value text-color">100</span>
+                        </div>
+                    </div>
+
+                    <p class="text-color">Despesas por Função e Gastos Gerais: <span class="text-color"
+                            id="result_0">0</span></p>
+
+                    <p class="text-color">Assistência Hospitalar e Despesas por Função: <span class="text-color"
+                            id="result_1">0</span></p>
+
+                    <p class="text-color">Atenção básica e Gastos Gerais: <span class="text-color"
+                            id="result_2">0</span></p>
+
+                    <p class="text-color">Assistência Hospitalar e Gastos Gerais: <span class="text-color"
+                            id="result_3">0</span></p>
+
+                    <p class="text-color">Despesas por Função e Atenção Básica: <span class="text-color"
+                            id="result_4">0</span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="group_cities">
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <script src="js/script.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
+    <script src="js/format_number.js"></script>
+    <script src="js/populate.js"></script>
+    <script src="js/models_json.js"></script>
+    <script src="js/clusters.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/sliders.js"></script>
+
 </body>
 
 </html>

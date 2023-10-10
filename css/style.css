@@ -1,5 +1,10 @@
 body {
-    background-color: #f8f9fa;
+    background-color: #393B4F;
+    color: aliceblue;
+}
+
+.text-color {
+    color: #393B4F;
 }
 
 .container {
@@ -13,4 +18,121 @@ body {
 
 .container {
     margin-top: 10px;
+}
+
+.background {
+    background-color: #525773;
+    border-radius: 30px;
+    padding: 20px;
+}
+
+.card-background-header{
+    background-color: #393B4F;
+}
+
+.btn-get-city{
+    background-color: #6BC9B9;
+    border-color: #6BC9B9;
+}
+
+.btn-get-city:hover{
+    background-color: #03c0a0;
+    border-color: #03c0a0;
+}
+
+.btn-get-city:active{
+    background-color: #03c0a0;
+    border-color: #03c0a0;
+}
+
+.btn-get-city:focus{
+    background-color: #03c0a0;
+    border-color: #03c0a0;
+}
+
+.btn-get-city:visited{
+    background-color: #03c0a0;
+    border-color: #03c0a0;
+}
+
+.btn-get-city:disabled{
+    background-color: #03c0a0;
+    border-color: #03c0a0;
+}
+
+.btn-view-map{
+    background-color: #B97EBB;
+    border-color: #B97EBB;
+}
+
+.btn-view-map:hover{
+    background-color: #a74ca7;
+    border-color: #a74ca7;
+}
+
+.btn-view-map:active{
+    background-color: #a74ca7;
+    border-color: #a74ca7;
+}
+
+.btn-view-map:focus{
+    background-color: #a74ca7;
+    border-color: #a74ca7;
+}
+
+.btn-view-map:visited{
+    background-color: #a74ca7;
+    border-color: #a74ca7;
+}
+
+.btn-view-map:disabled{
+    background-color: #a74ca7;
+    border-color: #a74ca7;
+}
+
+@media (max-width: 768px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* display 3 */
+@media (min-width: 768px) {
+    
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next {
+      transform: translateX(33.333%);
+    }
+    
+    .carousel-inner .carousel-item-left.active, 
+    .carousel-inner .carousel-item-prev {
+      transform: translateX(-33.333%);
+    }
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{ 
+  transform: translateX(0);
+}
+
+.slider-label {
+    width: 200px; 
+    display: inline-block;
+}
+
+.slider-container {
+    text-align: left; 
+}
+
+.slider-item {
+    margin-bottom: 10px; 
 }
